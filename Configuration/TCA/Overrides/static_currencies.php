@@ -11,7 +11,7 @@ defined('TYPO3_MODE') || die;
 
 call_user_func(
     function ($additionalFields, $dataSetName) {
-        \Bitmotion\StaticInfoTablesPl\Provider\TcaProvider::generateAndRegisterTca($additionalFields, $dataSetName);
+        \Leuchtfeuer\StaticInfoTablesPl\Provider\TcaProvider::generateAndRegisterTca($additionalFields, $dataSetName);
     },
     ['cu_name_en' => 'cu_name_pl', 'cu_sub_name_en' => 'cu_sub_name_pl'],
     'static_currencies'

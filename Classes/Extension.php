@@ -9,7 +9,7 @@ declare(strict_types=1);
  * Florian Wessels <f.wessels@Leuchtfeuer.com>, Leuchtfeuer Digital Marketing
  */
 
-namespace Bitmotion\StaticInfoTablesPl;
+namespace Leuchtfeuer\StaticInfoTablesPl;
 
 class Extension
 {
