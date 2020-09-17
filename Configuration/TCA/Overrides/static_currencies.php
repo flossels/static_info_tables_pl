@@ -1,19 +1,18 @@
 <?php
-defined('TYPO3_MODE') || die();
 
-call_user_func(function ($extKey, $table) {
-    $additionalFields = [
-        'cu_name_en' => 'cu_name_pl',
-        'cu_sub_name_en' => 'cu_sub_name_pl'
-    ];
-    foreach ($additionalFields as $sourceField => $destField) {
-        $additionalColumns = [];
-        $additionalColumns[$destField] = $GLOBALS['TCA'][$table]['columns'][$sourceField];
-        $additionalColumns[$destField]['label'] = 'LLL:EXT:' . $extKey . '/Resources/Private/Language/locallang_db.xlf:static_currencies_item.' . $destField;
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns($table, $additionalColumns);
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes($table, $destField, '',
-            'after:' . $sourceField);
-        // Add as search field
-        $GLOBALS['TCA'][$table]['ctrl']['searchFields'] .= ',' . $destField;
-    }
-}, 'static_info_tables_pl', 'static_currencies');
+/*
+ * This file is part of the "Static Info Tables (PL)" extension for TYPO3 CMS.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ * Florian Wessels <f.wessels@Leuchtfeuer.com>, Leuchtfeuer Digital Marketing
+ */
+
+defined('TYPO3_MODE') || die;
+
+call_user_func(
+    function ($additionalFields, $dataSetName) {
+        \Bitmotion\StaticInfoTablesPl\Provider\TcaProvider::generateAndRegisterTca($additionalFields, $dataSetName);
+    },
+    ['cu_name_en' => 'cu_name_pl', 'cu_sub_name_en' => 'cu_sub_name_pl'],
+    'static_currencies'
+);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the "Static Info Tables (PL)" extension for TYPO3 CMS.
  * For the full copyright and license information, please read the
@@ -7,12 +9,9 @@
  * Florian Wessels <f.wessels@Leuchtfeuer.com>, Leuchtfeuer Digital Marketing
  */
 
-defined('TYPO3_MODE') || die;
+namespace Bitmotion\StaticInfoTablesPl;
 
-call_user_func(
-    function ($additionalFields, $dataSetName) {
-        \Bitmotion\StaticInfoTablesPl\Provider\TcaProvider::generateAndRegisterTca($additionalFields, $dataSetName);
-    },
-    ['tr_name_en' => 'tr_name_pl'],
-    'static_territories'
-);
+class Extension
+{
+    const EXTENSION_KEY = 'static_info_tables_pl';
+}
